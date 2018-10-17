@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8"/>
+<title>thymeleaf</title>
 </head>
 <body>
-
+<!--<i th:text='这是第一个thymeleaf小程序'></i>-->
+<tr th:each="prod : ${testData}">
+    <td th:text="${prod.productName}"></td>
+    <td th:text="${prod.price}"></td>
+    <td th:text="${prod.sale}"></td>
+    <td th:text="${prod.productId}"></td>
+    <td th:text="${prod.image}"></td>
+</tr>
 </body>
 </html>
