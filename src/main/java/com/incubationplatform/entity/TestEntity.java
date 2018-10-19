@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by GMUK on 2018/10/17 0017.
  */
-public class TestEntity implements Serializable {
+public class TestEntity implements Serializable{
     private String productName;
     private Integer price;
     private Integer sale;
