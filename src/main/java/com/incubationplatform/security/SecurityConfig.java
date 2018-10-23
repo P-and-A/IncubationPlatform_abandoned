@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- *
  * @author GMUK
  * @date 2018/10/17 0017
  */
@@ -15,19 +14,31 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SecurityAuthenticationProvider authenticationProvider;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
 //                完全可以访问
-                .antMatchers("/test/test","/css/**","/test/index.html").permitAll()
+                .antMatchers("/test/test", "/css/**", "/test/index.html").permitAll()
 //        要求用户进行身份验证，并且必须与USER角色相关联
                 .antMatchers("/user/**").hasRole("ADMIN")
-                .antMatchers("/pages/maxadmin/**").hasRole("USER");
-//                .and()
+                .antMatchers("/pages/maxadmin/**").hasRole("USER")
+//                localhost:8080/pages/maxadmin/maxadmin.html
+                .and()
 ////        自定义登录页面和失败URL启用基于表单的身份验证
-//                .formLogin()
-//                .loginPage("/pages/visitor/login.html").failureUrl("/login-error").permitAll();
+                .formLogin()
+                    .loginPage("/visitor/login")
+                    .loginProcessingUrl("/visitor/login/form")
+                    .failureUrl("/visitor/loginError")
+                    .permitAll()
+                .and()
+                .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/visitor/login")
+                    .invalidateHttpSession(true)
+                    .and()
+                .csrf().disable();
         super.configure(http);
     }
 
