@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
 //                完全可以访问
-                .antMatchers("/student/**","/test/test", "/css/**", "/test/index.html").permitAll()
+                .antMatchers("/project/**","/student/**","/test/test", "/css/**", "/test/index.html").permitAll()
 //        要求用户进行身份验证，并且必须与USER角色相关联
                 .antMatchers("/user/**").hasRole("ADMIN")
                 .antMatchers("/pages/maxadmin/**").hasRole("USER")
