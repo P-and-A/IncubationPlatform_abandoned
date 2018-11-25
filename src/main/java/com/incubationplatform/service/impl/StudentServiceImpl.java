@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class StudentServiceImpl implements IStudentService{
     @Autowired
     private TSMapper tsMapper;
-    public ServerResponse addMember(Long teamId,Long memberId){
+    public ServerResponse addMember(String teamId,String memberId){
         int memberNum = tsMapper.selectByTeamId(teamId);
         if (memberNum >= 5){
             return ServerResponse.createByErrorMessage("添加失败，团队人数已满");

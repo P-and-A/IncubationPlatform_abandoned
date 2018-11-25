@@ -15,4 +15,7 @@ public interface ProjectMapper {
 
     @Select("select * from project where status = '22'")//22表示优秀的结项项目
     public List<Project> selectOutstandingProject();
+
+    @Select("select * from project where id = #{projectId}")
+    public Project selectProjectById(String projectId);
 }

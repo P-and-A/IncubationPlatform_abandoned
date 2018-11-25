@@ -2,8 +2,10 @@ package com.incubationplatform.controller;
 
 import com.incubationplatform.common.ServerResponse;
 import com.incubationplatform.service.IProjectService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,6 +34,17 @@ public class ProjectController {
     public ServerResponse selectOutstandingProjectName(){
         return iProjectService.selectOutstandingProjectName();
     }
+
+    @ResponseBody
+    @RequestMapping("/{projectId}")
+    public ServerResponse findProjectByIdInPublic(@PathVariable String projectId){
+        return iProjectService.selectProjectbyId(projectId);
+    }
+//    @ResponseBody
+//    @RequestMapping("/a")
+//    public String a(){
+//        return "register.html";
+//    }
 
 
 }

@@ -22,7 +22,7 @@ public class StudentController {
 
     @RequestMapping(value = "/team/{teamId}/add_member/{memberId}",method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse addMember(@PathVariable Long teamId, @PathVariable Long memberId){
+    public ServerResponse addMember(@PathVariable String teamId, @PathVariable String memberId){
         return iStudentService.addMember(teamId, memberId);
     }
 

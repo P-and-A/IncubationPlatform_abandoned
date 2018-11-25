@@ -12,4 +12,5 @@ public interface IProjectService {
     public ServerResponse selectApprovalProjectName();
 
     public ServerResponse selectOutstandingProjectName();
+    public ServerResponse selectProjectbyId(String projectId);
 }
