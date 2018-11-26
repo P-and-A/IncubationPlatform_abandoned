@@ -15,7 +15,7 @@ public class StudentServiceImpl implements IStudentService{
     @Autowired
     private TSMapper tsMapper;
     public ServerResponse addMember(String teamId,String memberId){
-        int memberNum = tsMapper.selectByTeamId(teamId);
+        int memberNum = tsMapper.selectByTeamId(teamId).size();
         if (memberNum >= 5){
             return ServerResponse.createByErrorMessage("添加失败，团队人数已满");
         }
